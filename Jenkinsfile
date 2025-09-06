@@ -46,22 +46,21 @@ pipeline {
 
         // ===== BACKEND DEPLOY =====
         stage('Deploy Backend to Tomcat') {
-            steps {
-                echo "🔹 Deploying Backend to Tomcat..."
-                bat '''
-                REM Remove old backend deployment if exists
-                if exist "C:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\travel-bucket-list-backend.war" (
-                    del /Q "C:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\travel-bucket-list-backend.war"
-                )
-                if exist "C:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\travel-bucket-list-backend" (
-                    rmdir /S /Q "C:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\travel-bucket-list-backend"
-                )
+    steps {
+        bat '''
+        REM Remove old backend deployment if exists
+        if exist "C:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\travel-bucket-list-backend.war" (
+            del /Q "C:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\travel-bucket-list-backend.war"
+        )
+        if exist "C:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\travel-bucket-list-backend" (
+            rmdir /S /Q "C:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\travel-bucket-list-backend"
+        )
 
-                REM Copy new WAR file (match your pom.xml finalName if needed)
-                copy "BackEnd\\travel-bucketlist-backend\\target\\travel-bucketlist-backend-0.0.1-SNAPSHOT.war" "C:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\travel-bucket-list-backend.war"
-                '''
-            }
-        }
+        REM Copy new WAR file
+        copy "BackEnd\\travel-bucketlist-backend\\target\\travel-bucket-list-backend.war" "C:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\travel-bucket-list-backend.war"
+        '''
+    }
+}
 
     }
 
