@@ -28,7 +28,7 @@ pipeline {
                 mkdir "C:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\travel-bucket-list-frontend"
 
                 REM Copy build files (React build output is usually 'build')
-                xcopy /E /I /Y FrontEnd\\travel-bucketlist\\dist\\* "C:\Program Files\Apache Software Foundation\Tomcat 10.1\webapps\travel-bucket-list-frontend"
+                xcopy /E /I /Y FrontEnd\\travel-bucketlist\\dist\\* "C:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\travel-bucket-list-frontend"
 
                 '''
             }
