@@ -17,6 +17,11 @@ public class DestinationController {
     public DestinationController(DestinationService service) {
         this.service = service;
     }
+    @GetMapping("/")
+    public String home() 
+    {
+        return "Jenkins Full Stack Deployment Successfull";
+    }
 
     // GET all
     @GetMapping("/all")
